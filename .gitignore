@@ -1,4 +1,4 @@
-# Ignorer fichiers lourds et artifacts MLflow
+# Ignorer les gros fichiers et artifacts MLflow
+Donnees/*.csv
 Scripts/artifacts/
 Scripts/mlruns/
-Donnees/*.csv
