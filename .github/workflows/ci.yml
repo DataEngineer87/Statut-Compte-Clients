@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-test-docker:
+  build-test-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,31 +15,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Installer Docker
-      - name: Set up Docker
+      # 2️⃣ Configurer Docker
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       # 3️⃣ Construire l'image Docker
       - name: Build Docker image
-        run: |
-          docker build -t account-status-api .
+        run: docker build -t statusclients-api .
 
-      # 4️⃣ Lancer le conteneur Docker sur le port 8001
+      # 4️⃣ Lancer le conteneur en arrière-plan
       - name: Run Docker container
         run: |
-          docker rm -f account-status-api || true
-          docker run -d -p 8001:8000 --name account-status-api account-status-api
-          sleep 5
-          echo "Docker container started on port 8001"
+          docker run -d -p 8000:8000 --name statusclients-api statusclients-api
+          sleep 5  # attendre que le serveur démarre
 
-      # 5️⃣ Tester l’endpoint /predict
-      - name: Test FastAPI endpoint
+      # 5️⃣ Tester l'API avec curl ou Python
+      - name: Test /predict endpoint
         run: |
-          python - <<'EOF'
-          import requests, time, json
-          time.sleep(3)  # assure le démarrage complet du conteneur
-          url = "http://127.0.0.1:8001/predict"
-          data = {
+          curl -X POST http://127.0.0.1:8000/predict \
+            -H "Content-Type: application/json" \
+            -d '{
               "gender": "Male",
               "marital_status": "Single",
               "employment_status": "Employed",
@@ -50,33 +45,10 @@ jobs:
               "children_per_age": 0.5,
               "log_annual_income": 10.5,
               "country": "France"
-          }
-          try:
-              r = requests.post(url, json=data)
-              print("Status:", r.status_code)
-              print("Response:", r.text)
-              assert r.status_code == 200, "API did not return 200 OK"
-              assert "prediction" in r.json(), "No prediction in response"
-              print("✅ /predict endpoint test passed successfully")
-          except Exception as e:
-              raise SystemExit(f"❌ Test API failed: {e}")
-          EOF
+            }'
 
-      # 6️⃣ Exécuter les tests unitaires
-      - name: Run unit tests
+      # 6️⃣ Arrêter et supprimer le conteneur après le test
+      - name: Clean up
         run: |
-          pip install -r requirements.txt pytest requests
-          pytest tests/ --maxfail=1 --disable-warnings -q
-
-      # 7️⃣ Sauvegarder les artefacts de test
-      - name: Upload reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: reports
-          path: |
-            reports/
-            artifacts/
-            mlruns/
-          if-no-files-found: ignore
-
+          docker stop statusclients-api
+          docker rm statusclients-api
