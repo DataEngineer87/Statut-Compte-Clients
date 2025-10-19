@@ -2,3 +2,5 @@
 Donnees/*.csv
 Scripts/artifacts/
 Scripts/mlruns/
+# Ne jamais suivre de jetons ou mots de passe
+github pat*.txt
