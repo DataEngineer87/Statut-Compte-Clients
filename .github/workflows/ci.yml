@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  build-test-docker:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,44 +15,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Configurer Python
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.13
+      # 2️⃣ Installer Docker
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
 
-      # 3️⃣ Installer les dépendances Python
-      - name: Install Python dependencies
+      # 3️⃣ Construire l'image Docker
+      - name: Build Docker image
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest requests fastapi uvicorn
+          docker build -t account-status-api .
 
-      # 4️⃣ Vérifier la structure du projet
-      - name: Verify project structure
+      # 4️⃣ Lancer le conteneur Docker sur le port 8001
+      - name: Run Docker container
         run: |
-          echo "Current working directory: $(pwd)"
-          ls -R
-
-      # 5️⃣ Exécuter les tests unitaires
-      - name: Run unit tests
-        run: |
-          pytest tests/ --maxfail=1 --disable-warnings -q
-
-      # 6️⃣ Lancer FastAPI en arrière-plan
-      - name: Start FastAPI
-        run: |
-          nohup uvicorn app.FastAPI:app --host 0.0.0.0 --port 8000 &
+          docker rm -f account-status-api || true
+          docker run -d -p 8001:8000 --name account-status-api account-status-api
           sleep 5
-          echo "FastAPI server started"
+          echo "Docker container started on port 8001"
 
-      # 7️⃣ Tester l’endpoint /predict
+      # 5️⃣ Tester l’endpoint /predict
       - name: Test FastAPI endpoint
         run: |
           python - <<'EOF'
           import requests, time, json
-          time.sleep(3)
-          url = "http://127.0.0.1:8000/predict"
+          time.sleep(3)  # assure le démarrage complet du conteneur
+          url = "http://127.0.0.1:8001/predict"
           data = {
               "gender": "Male",
               "marital_status": "Single",
@@ -76,19 +62,13 @@ jobs:
               raise SystemExit(f"❌ Test API failed: {e}")
           EOF
 
-      # 8️⃣ Construire l'image Docker
-      - name: Build Docker image
+      # 6️⃣ Exécuter les tests unitaires
+      - name: Run unit tests
         run: |
-          docker build -t account-status-api .
+          pip install -r requirements.txt pytest requests
+          pytest tests/ --maxfail=1 --disable-warnings -q
 
-      # 9️⃣ Lancer le conteneur Docker
-      - name: Run Docker container
-        run: |
-          docker run -d -p 8000:8000 --name account-status-api account-status-api
-          sleep 5
-          echo "Docker container started"
-
-      # 🔟 Optionnel : upload artefacts (rapports, modèles, logs)
+      # 7️⃣ Sauvegarder les artefacts de test
       - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v4
