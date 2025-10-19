@@ -1,77 +1,94 @@
-name: CI - Account Status Prediction
+name: CI/CD - FastAPI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build-test-docker:
+  build-and-test:
     runs-on: ubuntu-latest
+    services:
+      fastapi:
+        image: statusclients-api:latest  # ton image Docker
+        ports:
+          - 8000:8000
+        options: >-
+          --health-cmd="curl -f http://localhost:8000/health || exit 1"
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=5
 
     steps:
-      # 1️Clonage du  dépôt
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    # Étape 1 : Checkout du code
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
-      # 2️Configuation de Python pour les tests unitaires
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.13
+    # Étape 2 : Installer Python pour les tests unitaires
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
 
-      # 3️Installation des dépendances Python
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest requests fastapi uvicorn docker
+    # Étape 3 : Installer les dépendances pour les tests
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest requests
 
-      # 4️Exécution des tests unitaires
-      - name: Run unit tests
-        run: |
-          pytest tests/ --maxfail=1 --disable-warnings -q
+    # Étape 4 : Lancer les tests unitaires
+    - name: Run unit tests
+      run: pytest tests/ --maxfail=1 --disable-warnings -q
 
-      # 5️Construction de l’image Docker
-      - name: Build Docker image
-        run: |
-          sudo docker build -t statusclients-api .
+    # Étape 5 : Build Docker
+    - name: Build Docker image
+      run: docker build -t statusclients-api .
 
-      # 6️Lancement de conteneur Docker
-      - name: Run Docker container
-        run: |
-          sudo docker run -d --name statusclients-api -p 8000:8000 statusclients-api
-          sleep 5  # en attente de démarragede  FastAPI 
+    # Étape 6 : Attendre que le service FastAPI soit prêt
+    - name: Wait for FastAPI to be ready
+      run: |
+        echo "Waiting for FastAPI service..."
+        for i in {1..10}; do
+          if curl -f http://localhost:8000/health; then
+            echo "FastAPI ready!"
+            break
+          fi
+          sleep 3
+        done
 
-      # 7️Teste de l’API dans le conteneur
-      - name: Test API endpoint
-        run: |
-          python - <<'EOF'
-          import requests
-          url = "http://127.0.0.1:8000/predict"
-          data = {
-              "gender": "Male",
-              "marital_status": "Single",
-              "employment_status": "Employed",
-              "education_level": "Bachelor",
-              "subscription_type": "Premium",
-              "age_group": "35-44",
-              "number_of_children": 2,
-              "children_per_age": 0.5,
-              "log_annual_income": 10.5,
-              "country": "France"
-          }
-          r = requests.post(url, json=data)
-          print("Status:", r.status_code)
-          print("Response:", r.json())
-          assert r.status_code == 200, "API did not return 200 OK"
-          assert "prediction" in r.json(), "No prediction in response"
-          print("/predict endpoint test passed successfully")
-          EOF
+    # Étape 7 : Tester l’endpoint /predict
+    - name: Test /predict endpoint
+      run: |
+        python - <<'EOF'
+        import requests
+        import sys
 
-      # 8️Nettoyage de conteneur après le test
-      - name: Cleanup Docker
-        run: |
-          sudo docker stop statusclients-api
-          sudo docker rm statusclients-api
+        url = "http://localhost:8000/predict"
+        data = {
+            "gender": "Male",
+            "marital_status": "Single",
+            "employment_status": "Employed",
+            "education_level": "Bachelor",
+            "subscription_type": "Premium",
+            "age_group": "35-44",
+            "number_of_children": 2,
+            "children_per_age": 0.5,
+            "log_annual_income": 10.5,
+            "country": "France"
+        }
+
+        try:
+            r = requests.post(url, json=data, timeout=10)
+            r.raise_for_status()
+        except requests.RequestException as e:
+            print(f"Request failed: {e}")
+            sys.exit(1)
+
+        resp = r.json()
+        assert "prediction" in resp, "No prediction in response"
+        print("/predict endpoint test passed successfully")
+        EOF
