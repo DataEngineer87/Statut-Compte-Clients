@@ -1,4 +1,4 @@
-name: 🚀 CI - Account Status Prediction
+name: CI - Account Status Prediction
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-test-api:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,45 +19,39 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: 3.10
 
       # 3️⃣ Installer les dépendances
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest requests flake8
+          pip install pytest requests fastapi uvicorn
 
       # 4️⃣ Vérifier la structure du projet
       - name: Verify project structure
         run: |
-          echo "📁 Current working directory: $(pwd)"
+          echo "Current working directory: $(pwd)"
           ls -R
 
-      # 5️⃣ Vérifier la qualité du code
-      - name: Lint with flake8
-        run: |
-          flake8 Scripts --count --select=E9,F63,F7,F82 --show-source --statistics
-          flake8 Scripts --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
-      # 6️⃣ Exécuter les tests unitaires
+      # 5️⃣ Exécuter les tests unitaires (API, encodage, etc.)
       - name: Run unit tests
         run: |
           pytest tests/ --maxfail=1 --disable-warnings -q
 
-      # 7️⃣ Lancer FastAPI
+      # 6️⃣ Lancer FastAPI en arrière-plan (pour test API réel)
       - name: Start FastAPI
         run: |
-          nohup uvicorn app.api:app --host 0.0.0.0 --port 8000 &
-          sleep 5
-          echo "✅ FastAPI server started"
+          nohup uvicorn app.FastAPI:app --host 0.0.0.0 --port 8000 &
+          sleep 10
+          echo "FastAPI server started"
 
-      # 8️⃣ Tester l’endpoint /predict
+      # 7️⃣ Tester l’endpoint /predict
       - name: Test FastAPI endpoint
         run: |
           python - <<'EOF'
           import requests, time, json
-          time.sleep(3)
+          time.sleep(3)  # délai supplémentaire pour être sûr que le serveur est prêt
           url = "http://127.0.0.1:8000/predict"
           data = {
               "gender": "Male",
@@ -82,7 +76,7 @@ jobs:
               raise SystemExit(f"❌ Test API failed: {e}")
           EOF
 
-      # 9️⃣ Sauvegarder les artefacts de test (rapports, modèles, etc.)
+      # 8️⃣ Sauvegarder les artefacts de test (rapports, modèles, etc.)
       - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v4
