@@ -21,8 +21,8 @@ jobs:
         with:
           python-version: 3.13
 
-      # 3️⃣ Installer les dépendances
-      - name: Install dependencies
+      # 3️⃣ Installer les dépendances Python
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -34,16 +34,16 @@ jobs:
           echo "Current working directory: $(pwd)"
           ls -R
 
-      # 5️⃣ Exécuter les tests unitaires (API, encodage, etc.)
+      # 5️⃣ Exécuter les tests unitaires
       - name: Run unit tests
         run: |
           pytest tests/ --maxfail=1 --disable-warnings -q
 
-      # 6️⃣ Lancer FastAPI en arrière-plan (pour test API réel)
+      # 6️⃣ Lancer FastAPI en arrière-plan
       - name: Start FastAPI
         run: |
           nohup uvicorn app.FastAPI:app --host 0.0.0.0 --port 8000 &
-          sleep 10
+          sleep 5
           echo "FastAPI server started"
 
       # 7️⃣ Tester l’endpoint /predict
@@ -51,7 +51,7 @@ jobs:
         run: |
           python - <<'EOF'
           import requests, time, json
-          time.sleep(3)  # délai supplémentaire pour être sûr que le serveur est prêt
+          time.sleep(3)
           url = "http://127.0.0.1:8000/predict"
           data = {
               "gender": "Male",
@@ -76,7 +76,19 @@ jobs:
               raise SystemExit(f"❌ Test API failed: {e}")
           EOF
 
-      # 8️⃣ Sauvegarder les artefacts de test (rapports, modèles, etc.)
+      # 8️⃣ Construire l'image Docker
+      - name: Build Docker image
+        run: |
+          docker build -t account-status-api .
+
+      # 9️⃣ Lancer le conteneur Docker
+      - name: Run Docker container
+        run: |
+          docker run -d -p 8000:8000 --name account-status-api account-status-api
+          sleep 5
+          echo "Docker container started"
+
+      # 🔟 Optionnel : upload artefacts (rapports, modèles, logs)
       - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v4
