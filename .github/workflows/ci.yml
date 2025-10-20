@@ -1,94 +1,38 @@
-name: CI/CD - FastAPI
+name: CI/CD Pipeline - Status Clients API
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build-test-deploy:
     runs-on: ubuntu-latest
-    services:
-      fastapi:
-        image: statusclients-api:latest  # ton image Docker
-        ports:
-          - 8000:8000
-        options: >-
-          --health-cmd="curl -f http://localhost:8000/health || exit 1"
-          --health-interval=5s
-          --health-timeout=3s
-          --health-retries=5
 
     steps:
-    # Étape 1 : Checkout du code
-    - name: Checkout repo
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # Étape 2 : Installer Python pour les tests unitaires
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.10
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-    # Étape 3 : Installer les dépendances pour les tests
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest requests
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
 
-    # Étape 4 : Lancer les tests unitaires
-    - name: Run unit tests
-      run: pytest tests/ --maxfail=1 --disable-warnings -q
+      - name: Run tests
+        run: pytest tests/ --maxfail=1 --disable-warnings -q
 
-    # Étape 5 : Build Docker
-    - name: Build Docker image
-      run: docker build -t statusclients-api .
+      - name: Build Docker image
+        run: docker build -t statusclients-api .
 
-    # Étape 6 : Attendre que le service FastAPI soit prêt
-    - name: Wait for FastAPI to be ready
-      run: |
-        echo "Waiting for FastAPI service..."
-        for i in {1..10}; do
-          if curl -f http://localhost:8000/health; then
-            echo "FastAPI ready!"
-            break
-          fi
-          sleep 3
-        done
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-    # Étape 7 : Tester l’endpoint /predict
-    - name: Test /predict endpoint
-      run: |
-        python - <<'EOF'
-        import requests
-        import sys
+      - name: Tag Docker image
+        run: docker tag statusclients-api ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
 
-        url = "http://localhost:8000/predict"
-        data = {
-            "gender": "Male",
-            "marital_status": "Single",
-            "employment_status": "Employed",
-            "education_level": "Bachelor",
-            "subscription_type": "Premium",
-            "age_group": "35-44",
-            "number_of_children": 2,
-            "children_per_age": 0.5,
-            "log_annual_income": 10.5,
-            "country": "France"
-        }
-
-        try:
-            r = requests.post(url, json=data, timeout=10)
-            r.raise_for_status()
-        except requests.RequestException as e:
-            print(f"Request failed: {e}")
-            sys.exit(1)
-
-        resp = r.json()
-        assert "prediction" in resp, "No prediction in response"
-        print("/predict endpoint test passed successfully")
-        EOF
+      - name: Push to Docker Hub
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
