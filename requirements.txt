@@ -8,7 +8,7 @@ joblib
 mlflow
 pydantic
 pytest
-
-
+streamlit
+requests
 
 
