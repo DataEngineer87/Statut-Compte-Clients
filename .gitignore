@@ -5,3 +5,13 @@ Scripts/mlruns/
 # Ne jamais suivre de jetons ou mots de passe
 github pat*.txt
 github pat 11AW3P2TI02dekDr9zc2lK.txt
+# Données lourdes
+mlruns/
+artifacts/*.pkl
+
+# Caches et checkpoints
+__pycache__/
+*.pyc
+*.pkl
+*.h5
+*.ipynb_checkpoints/
