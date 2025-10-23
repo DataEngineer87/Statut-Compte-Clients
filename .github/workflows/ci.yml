@@ -11,29 +11,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧩 Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
 
-      - name: 🐍 Setup Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.13"
 
-      - name: 📦 Installer les dépendances + pytest
+      - name: Installer les dépendances + pytest
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest  # ✅ Ajout explicite pour éviter "command not found"
+          pip install pytest  #  Ajout explicite pour éviter "command not found"
 
-      - name: 🧪 Exécuter les tests unitaires
+      - name: Exécuter les tests unitaires
         run: |
           pytest tests/ --maxfail=1 --disable-warnings -q
 
-      - name: 🔐 Connexion à Docker Hub
+      - name: Connexion à Docker Hub
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - name: 🏗️ Build de l'image Docker
+      - name: Build de l'image Docker
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest .
 
@@ -41,7 +41,7 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
 
-      - name: ✅ Vérification du /predict
+      - name: Vérification du /predict
         run: |
           docker run -d -p 8000:8000 --name fastapi_test ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
           sleep 5
