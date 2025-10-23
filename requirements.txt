@@ -1,10 +1,14 @@
 fastapi
 uvicorn
+pytest
+httpx
 pandas
 scikit-learn
 joblib
 mlflow
 pydantic
 pytest
+
+
 
 
