@@ -50,7 +50,8 @@ L’application prédit si un **compte client** est **actif ou inactif**,
 
 *Exemple d'appel à l'API :*
 
-```bash
+```
+
 curl -X POST http://127.0.0.1:8000/predict \
 -H "Content-Type: application/json" \
 -d '{
@@ -66,10 +67,10 @@ curl -X POST http://127.0.0.1:8000/predict \
   "country": "France"
 }
 
+
+
+
 <a href="images/AppStreamlit.pdf">
   <img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>
 </a>
-
-
-
 
