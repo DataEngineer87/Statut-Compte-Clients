@@ -10,7 +10,7 @@
 
 ---
 
-## 🎯 Objectif du projet
+## Objectif du projet
 
 Ce projet démontre la mise en place d’un pipeline **MLOps complet** :  
 de l’entraînement d’un modèle de machine learning, jusqu’à son **déploiement automatisé en production**, via **FastAPI**, **Docker**, et **GitHub Actions**.
