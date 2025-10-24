@@ -17,7 +17,7 @@
 
 ---
 
-## Objectif du projet
+### Objectif du projet
 
 Ce projet démontre la mise en place d’un pipeline **MLOps complet** :  
 de l’entraînement d’un modèle de machine learning, jusqu’à son **déploiement automatisé en production**, via **FastAPI**, **Docker**, et **GitHub Actions**.
@@ -31,7 +31,7 @@ Il inclut :
 - **SHAP** pour l’explicabilité des décisions,  
 - **Monitoring manuel** pour suivre les performances du modèle.
 
-## Description rapide du pipeline
+### Description rapide du pipeline
 
 | Étape | Technologie | Description |
 |:------|:-------------|:------------|
@@ -43,7 +43,7 @@ Il inclut :
 
 ---
 
-## Résultat attendu
+### Résultat attendu
 
 L’application prédit si un **compte client** est **actif ou inactif**,  
 à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement...).
@@ -68,7 +68,7 @@ curl -X POST http://127.0.0.1:8000/predict \
 
 ---
 
-## Démonstration interactive
+### Démonstration interactive
 
 <p align="center">
   <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
