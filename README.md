@@ -23,4 +23,4 @@
 </p>
 
 **Testez l'application en ligne :**
-👉 [predictionstatutcompte.streamlit.app](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
+👉 [predictionstatutcompte.web.application](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
