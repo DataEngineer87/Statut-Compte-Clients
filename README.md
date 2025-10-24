@@ -16,45 +16,45 @@ Ce projet démontre la mise en place d’un pipeline **MLOps complet** :
 de l’entraînement d’un modèle de machine learning, jusqu’à son **déploiement automatisé en production**, via **FastAPI**, **Docker**, et **GitHub Actions**.
 
 Il inclut :
-- 🧩 **MLflow** pour le suivi des expérimentations,  
-- ⚙️ **FastAPI** pour l’exposition du modèle en API REST,  
-- 🐳 **Docker** pour la conteneurisation,  
-- 🔁 **GitHub Actions** pour le CI/CD,  
-- 📊 **Streamlit Cloud** pour le tableau de bord de prédiction,  
-- 🧮 **SHAP** pour l’explicabilité des décisions,  
-- 📈 **Monitoring manuel** pour suivre les performances du modèle.
+- **MLflow** pour le suivi des expérimentations,  
+- **FastAPI** pour l’exposition du modèle en API REST,  
+- **Docker** pour la conteneurisation,  
+- **GitHub Actions** pour le CI/CD,  
+- **Streamlit Cloud** pour le tableau de bord de prédiction,  
+- **SHAP** pour l’explicabilité des décisions,  
+- **Monitoring manuel** pour suivre les performances du modèle.
 
 ---
 
-## 🎥 Démonstration interactive
+## Démonstration interactive
 
 <p align="center">
   <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
 </p>
 
-🚀 **Essayez l'application en ligne :**  
+**Essayez l'application en ligne :**  
 👉 [predictionstatutcompte.streamlit.app](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 ---
 
-## 🧩 Description rapide du pipeline
+## Description rapide du pipeline
 
 | Étape | Technologie | Description |
 |:------|:-------------|:------------|
-| **1️⃣ Entraînement** | MLflow | Suivi et versionnement du modèle |
-| **2️⃣ Déploiement API** | FastAPI + Docker | Déploiement d’une API REST pour la prédiction |
-| **3️⃣ CI/CD** | GitHub Actions | Build + tests + push automatique sur Docker Hub |
-| **4️⃣ Interface utilisateur** | Streamlit Cloud | Interface de prédiction accessible en ligne |
-| **5️⃣ Explicabilité & Monitoring** | SHAP + Notebook | Analyse de l’importance des variables et suivi des métriques |
+| **Entraînement** | MLflow | Suivi et versionnement du modèle |
+| **Déploiement API** | FastAPI + Docker | Déploiement d’une API REST pour la prédiction |
+| **CI/CD** | GitHub Actions | Build + tests + push automatique sur Docker Hub |
+| **Interface utilisateur** | Streamlit Cloud | Interface de prédiction accessible en ligne |
+| **Explicabilité & Monitoring** | SHAP + Notebook | Analyse de l’importance des variables et suivi des métriques |
 
 ---
 
-## 🧠 Résultat attendu
+## Résultat attendu
 
 L’application prédit si un **compte client** est **actif ou inactif**,  
 à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement...).
 
-💬 *Exemple d’appel à l’API :*
+*Exemple d’appel à l’API :*
 ```bash
 curl -X POST http://127.0.0.1:8000/predict \
 -H "Content-Type: application/json" \
