@@ -1,4 +1,4 @@
-# Prédiction du Statut de Compte – MLOps de bout en bout
+## Prédiction du Statut de Compte – MLOps de bout en bout
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-FF4B4B?logo=streamlit&logoColor=white)
@@ -10,7 +10,7 @@
 
 ---
 
-## Démonstration interactive
+### Démonstration interactive
 [![Streamlit Cloud](https://img.shields.io/badge/🚀_App_Streamlit-Testez%20l'application%20en%20ligne-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 ---
