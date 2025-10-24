@@ -14,7 +14,6 @@
 ---
 
 ## Démonstration interactive
-
 <p align="center">
   <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
 </p>
