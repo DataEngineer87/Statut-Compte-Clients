@@ -11,7 +11,7 @@
 ---
 
 ## Démonstration interactive
-[![Streamlit Cloud](https://img.shields.io/badge/🚀_App_Streamlit-Testez%20l'application-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
+[![Streamlit Cloud](https://img.shields.io/badge/🚀_App_Streamlit-Testez%20l'application%20en%20ligne-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 <p align="center">
   <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
