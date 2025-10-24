@@ -16,7 +16,7 @@
 ## Démonstration interactive
 <p align="center">
   <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
+</p>   
 
 **Testez l'application en ligne :**
 👉 [Predictionstatutcompte.web.application](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
-</p>
