@@ -48,7 +48,8 @@ Il inclut :
 L’application prédit si un **compte client** est **actif ou inactif**,  
 à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement, etc).
 
-*Exemple d’appel à l’API :*
+*Exemple d'appel à l'API :*
+
 ```bash
 curl -X POST http://127.0.0.1:8000/predict \
 -H "Content-Type: application/json" \
