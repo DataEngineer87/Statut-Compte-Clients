@@ -1,4 +1,4 @@
-# Prédiction du Statut de Compte – MLOps, FastAPI & Streamlit
+# Prédiction du Statut de Compte – MLOps de bout en bout
 <p align="center">
   
 ![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
