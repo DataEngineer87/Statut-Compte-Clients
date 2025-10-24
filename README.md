@@ -8,22 +8,10 @@
 ![SHAP](https://img.shields.io/badge/Explainability-SHAP-FE7A16?logo=plotly&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-<p align="center">
-  
-  <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
-  
-</p>
-
-
-
 ---
 
 ## Démonstration interactive
 [![Streamlit Cloud](https://img.shields.io/badge/🚀_App_Streamlit-Testez%20l'application%20en%20ligne-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
-
-
-**Testez l'application en ligne :**  
-👉 [predictionstatutcompte.streamlit.app](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 ---
 
