@@ -10,6 +10,19 @@
 
 ---
 
+## Démonstration interactive
+
+<p align="center">
+  <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
+</p>
+
+**Essayez l'application en ligne :**  
+👉 [predictionstatutcompte.streamlit.app](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
+
+---
+
+---
+
 ## Objectif du projet
 
 Ce projet démontre la mise en place d’un pipeline **MLOps complet** :  
@@ -23,19 +36,6 @@ Il inclut :
 - **Streamlit Cloud** pour le tableau de bord de prédiction,  
 - **SHAP** pour l’explicabilité des décisions,  
 - **Monitoring manuel** pour suivre les performances du modèle.
-
----
-
-## Démonstration interactive
-
-<p align="center">
-  <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
-</p>
-
-**Essayez l'application en ligne :**  
-👉 [predictionstatutcompte.streamlit.app](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
-
----
 
 ## Description rapide du pipeline
 
