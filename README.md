@@ -65,3 +65,11 @@ curl -X POST http://127.0.0.1:8000/predict \
   "log_annual_income": 10.5,
   "country": "France"
 }
+
+<a href="images/AppStreamlit.pdf">
+  <img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>
+</a>
+
+
+
+
