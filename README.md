@@ -9,8 +9,6 @@
 ![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-# [![Streamlit Cloud](https://img.shields.io/badge/🚀_App_Streamlit-Clic%20ici-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
-
 </p>
 
 
