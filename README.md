@@ -63,18 +63,4 @@ curl -X POST http://127.0.0.1:8000/predict \
   "children_per_age": 0.5,
   "log_annual_income": 10.5,
   "country": "France"
-}'
-
-
----
-
-### Démonstration interactive
-
-<p align="center">
-  <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
-</p>   
-
----
-
-**Testez l'application en ligne :**
-👉 [Predictionstatutcompte.web.application](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
+}
