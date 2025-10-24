@@ -12,3 +12,15 @@
 [![Streamlit Cloud](https://img.shields.io/badge/🚀_App_Streamlit-Clic%20ici-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 </p>
+
+
+---
+
+## 🎥 Démonstration interactive
+
+<p align="center">
+  <img src="assets/demo.gif" alt="Démonstration de l'application Streamlit" width="700"/>
+</p>
+
+🚀 **Essayez l'application en ligne :**
+👉 [predictionstatutcompte.streamlit.app](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
