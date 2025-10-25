@@ -106,28 +106,10 @@ Dans cet exemple, on a :
 ### Déploiement avec Docker
 
 ```
-# Construction de l'image Docker à partir du Dockerfile
-
-# -t : donne un nom et un tag à l'image (ici "alseny87/statusclients-api:latest")
-
-# .  : indique que le Dockerfile se trouve dans le répertoire courant
-
 docker build -t alseny87/statusclients-api:latest .
-
-#  Lancement du conteneur à partir de l'image construite
-
-# -d : exécute le conteneur en arrière-plan (mode détaché)
-
-# -p 8000:8000 : mappe le port 8000 du conteneur vers le port 8000 local
-
-# --name fastapi_app : donne un nom au conteneur pour le retrouver facilement
-
 docker run -d -p 8000:8000 --name fastapi_app alseny87/statusclients-api:latest
 
-# Test de l’API FastAPI via une requête HTTP sur le endpoint /predict
-
 # Vérification si l’API répond correctement sur le port exposé (8000)
-
 curl http://127.0.0.1:8000/predict
 
 ```
@@ -135,28 +117,12 @@ curl http://127.0.0.1:8000/predict
 ### CI/CD — GitHub Actions
 
 Workflow automatisé dans .github/workflows/mlops.yml
-```
-# Étape de test de l’API FastAPI dans le workflow GitHub Actions
-
-- name: Vérification du /predict  # Nom affiché dans l’interface GitHub Actions
-
-  run: |  # Indique l'execution de plusieurs commandes shell
-
-    #     Lancement du conteneur Docker de l’API en arrière-plan (-d)
-
-    #    -p 8000:8000 → redirige le port local 8000 vers celui du conteneur
-
-    #    --name fastapi_test → donne un nom au conteneur (facilite le debug)
-
-    #    ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest → image Docker poussée sur Docker Hub
-
+- name: Vérification du /predict
+  run: |
     docker run -d -p 8000:8000 --name fastapi_test ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
-
-    sleep 5  # Attendre quelques secondes que l’API démarre avant de l’interroger
-
+    sleep 5
     curl -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d '{"gender": "Male", ...}'
 ```
-
 Chaque push sur main déclenche :
 - Tests unitaires 
 - Build Docker 
