@@ -48,7 +48,7 @@ Il inclut :
 L’application prédit si un **compte client** est **actif ou inactif**,  
 à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement, etc).
 
-*Exemple d'appel à l'API :*
+**Exemple d'appel à l'API :**
 
 ```
 
