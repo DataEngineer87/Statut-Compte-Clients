@@ -158,12 +158,14 @@ Ils ne sont pas inclus dans le workflow CI/CD (par souci d’efficacité), mais 
 
 Suivi des performances et détection de dérive des données avec MLflow et un tableau de bord Streamlit.
 
+```
 <a href="images/AppStreamlit.pdf">
   ![Monitoring Example](<img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>)
 </a>
-
+```
 ### Stack Technique
 
+```
 | Catégorie                 | Outils & Technologies |
 | ------------------------- | --------------------- |
 | **Langage principal**     | Python 3.10+          |
@@ -174,6 +176,8 @@ Suivi des performances et détection de dérive des données avec MLflow et un t
 | **Suivi Expériences**     | MLflow                |
 | **Explicabilité**         | SHAP                  |
 | **Tests Unitaires**       | pytest                |
+
+```
 
 ### Points Forts du Projet
 - Pipeline MLOps complet — du notebook au déploiement
