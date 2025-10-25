@@ -75,7 +75,7 @@ uvicorn app.fast_api:app --reload --host 127.0.0.1 --port 8000
 ```
 
 
-### Pout tester l’API localement
+### Pour tester l’API localement
 ```
 curl -X POST http://127.0.0.1:8000/predict \
 -H "Content-Type: application/json" \
@@ -92,20 +92,12 @@ curl -X POST http://127.0.0.1:8000/predict \
   "country": "France"
 }'
 ```
-
-
-
-
-
-
-
-
 ### Résultat attendu
 
 L’application prédit si un **compte client** est **actif ou inactif**,  
 à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement, etc).
 
-Dans notre cas, ona a : 
+Dans cet exemple, on a : 
 ```
 {"prediction": "Active"}
 ```
@@ -145,6 +137,17 @@ Les notebooks intégrés permettent de :
 - expliquer les variables clés grâce à SHAP.
 
 Ils ne sont pas inclus dans le workflow CI/CD (par souci d’efficacité), mais servent à des ***analyses post-déploiement.***
+
+#### Monitoring du modèle
+
+Suivi des performances et détection de dérive des données avec MLflow et un tableau de bord Streamlit.
+
+![Monitoring Example](./reports/monitoring_example.png)
+
+<a href="images/AppStreamlit.pdf">
+  ![Monitoring Example](<img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>)
+</a>
+
 ### Stack Technique
 
 | Catégorie                 | Outils & Technologies |
@@ -173,9 +176,5 @@ Ils ne sont pas inclus dans le workflow CI/CD (par souci d’efficacité), mais 
 
 ***Data Scientist & Machine Learning Engineer — Passionné par le déploiement et l’explicabilité des modèles IA.***
 
-
-<a href="images/AppStreamlit.pdf">
-  <img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>
-</a>
 
 
