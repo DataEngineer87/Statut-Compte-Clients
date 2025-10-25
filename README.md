@@ -28,26 +28,13 @@ Le tout avec un suivi expérimental via **MLflow**, une explicabilité avec **SH
 Cette démarche suit une logique **modulaire et scalable**, typique d’un pipeline MLOps de production.
 
 Elle inclut :
-- **MLflow** pour le suivi des expérimentations,  
+- **MLflow** pour le suivi des expérimentations et versionnement du modèle,  
 - **FastAPI** pour l’exposition du modèle en API REST,  
 - **Docker** pour la conteneurisation,  
 - **GitHub Actions** pour le CI/CD,  
 - **Streamlit Cloud** pour le tableau de bord de prédiction,  
 - **SHAP** pour l’explicabilité des décisions,  
 - **Monitoring manuel** pour suivre les performances du modèle.
-
-### Description rapide du pipeline
-
-
-
-| Étape | Technologie | Description |
-|:------|:-------------|:------------|
-| **Entraînement** | MLflow | Suivi et versionnement du modèle |
-| **Déploiement API** | FastAPI + Docker | Déploiement d’une API REST pour la prédiction |
-| **CI/CD** | GitHub Actions | Build + tests + push automatique sur Docker Hub |
-| **Interface utilisateur** | Streamlit Cloud | Interface de prédiction accessible en ligne |
-| **Explicabilité & Monitoring** | SHAP + Notebook | Analyse de l’importance des variables et suivi des métriques |
-
 
 
 ### Structure du dépôt
@@ -76,13 +63,19 @@ PredictionStatutCompte/
 
 ``` 
 
-### Résultat attendu
+### Déploiement & Exécution
 
-L’application prédit si un **compte client** est **actif ou inactif**,  
-à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement, etc).
+#### Exécution locale
+git clone https://github.com/DataEngineer87/Statut-Compte-Clients.git
+cd Statut-Compte-Clients
+python -m venv venv
+source venv/bin/activate  
+pip install -r requirements.txt
+uvicorn app.fast_api:app --reload --host 127.0.0.1 --port 8000
 
-**Exemple d'appel à l'API :**
 
+
+### Pout tester l’API localement
 ```
 curl -X POST http://127.0.0.1:8000/predict \
 -H "Content-Type: application/json" \
@@ -97,9 +90,28 @@ curl -X POST http://127.0.0.1:8000/predict \
   "children_per_age": 0.5,
   "log_annual_income": 10.5,
   "country": "France"
-}
+}'
+```
+
+
+
+
+
+
+
+
+### Résultat attendu
+
+L’application prédit si un **compte client** est **actif ou inactif**,  
+à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement, etc).
+
+Ici : 
 
 ```
+{"prediction": "Active"}
+
+```
+
 
 
 
