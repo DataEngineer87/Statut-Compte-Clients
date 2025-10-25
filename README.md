@@ -64,6 +64,7 @@ PredictionStatutCompte/
 ### Déploiement & Exécution
 
 #### Exécution locale
+```
 git clone https://github.com/DataEngineer87/Statut-Compte-Clients.git
 cd Statut-Compte-Clients
 python -m venv venv
@@ -71,6 +72,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.fast_api:app --reload --host 127.0.0.1 --port 8000
 
+```
 
 
 ### Pout tester l’API localement
