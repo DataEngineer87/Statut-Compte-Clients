@@ -16,7 +16,7 @@
 ---
 
 
-## Objectif du projet
+### Objectif du projet
 
 Ce projet illustre la mise en œuvre **complète d’un pipeline MLOps** permettant de :
 - **entraîner un modèle de machine learning** (Random Forest),
@@ -47,7 +47,27 @@ Elle inclut :
 | **Interface utilisateur** | Streamlit Cloud | Interface de prédiction accessible en ligne |
 | **Explicabilité & Monitoring** | SHAP + Notebook | Analyse de l’importance des variables et suivi des métriques |
 
+### Structure du dépôt
 
+PredictionStatutCompte/
+│── app/
+│   ├── FastAPI.py              # API FastAPI pour servir le modèle
+│
+│── Scripts/
+│   ├── train_model.py           # Entraînement et sauvegarde du modèle
+│   ├── web_app.py                   # Application Streamlit
+│
+│── tests/
+│   ├── test_api.py              # Tests unitaires de l'API FastAPI
+│
+│── models/                      # Modèles sauvegardés
+│── Donnees/                        # Données d'entraînement et de test
+│── monitoring.ipynb             # Suivi des performances du modèle
+│── shap.ipynb                   # Explicabilité des variables avec SHAP
+│── requirements.txt             # Dépendances Python
+│── Dockerfile                   # Image Docker de l’API
+│── .github/workflows/mlops.yml  # Workflow CI/CD GitHub Actions
+│── README.md                    # Documentation du projet
 
 ### Résultat attendu
 
@@ -57,8 +77,6 @@ L’application prédit si un **compte client** est **actif ou inactif**,
 **Exemple d'appel à l'API :**
 
 ```
-
-
 curl -X POST http://127.0.0.1:8000/predict \
 -H "Content-Type: application/json" \
 -d '{
