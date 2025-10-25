@@ -178,9 +178,9 @@ Suivi des performances et détection de dérive des données avec MLflow et un t
 
 # Auteur
 
-### Réalisé par : Alseny SACKO
+### Réalisé par : Alseny 
 
-***Data Scientist & Machine Learning Engineer — Passionné par le déploiement et l’explicabilité des modèles IA.***
+***Data Scientist & ML Engineer passionné par l’IA générative, le MLOps et le déploiement de modèles en production.***
 
 
 
