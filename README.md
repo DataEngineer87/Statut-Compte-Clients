@@ -8,12 +8,11 @@
 ![SHAP](https://img.shields.io/badge/Explainability-SHAP-FE7A16?logo=plotly&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
----
-
+```
 ### Démonstration interactive
 [![Streamlit Cloud](https://img.shields.io/badge/App_Streamlit-Cliquez%20ici%20pour%20tester%20l'application%20en%20ligne-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
----
+```
 
 
 ### Objectif du projet
@@ -38,7 +37,8 @@ Elle inclut :
 - **Monitoring manuel** pour suivre les performances du modèle.
 
 ### Description rapide du pipeline
----
+
+```
 
 | Étape | Technologie | Description |
 |:------|:-------------|:------------|
@@ -49,10 +49,11 @@ Elle inclut :
 | **Explicabilité & Monitoring** | SHAP + Notebook | Analyse de l’importance des variables et suivi des métriques |
 
 
----
+```
 
 ### Structure du dépôt
---- 
+
+``` 
 
 PredictionStatutCompte/
 │── app/
@@ -74,7 +75,7 @@ PredictionStatutCompte/
 │── .github/workflows/mlops.yml  # Workflow CI/CD GitHub Actions
 │── README.md                    # Documentation du projet
 
---- 
+``` 
 
 ### Résultat attendu
 
@@ -99,6 +100,7 @@ curl -X POST http://127.0.0.1:8000/predict \
   "country": "France"
 }
 
+```
 
 
 ```
