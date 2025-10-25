@@ -38,7 +38,7 @@ Elle inclut :
 
 ### Description rapide du pipeline
 
-```
+
 
 | Étape | Technologie | Description |
 |:------|:-------------|:------------|
@@ -49,7 +49,6 @@ Elle inclut :
 | **Explicabilité & Monitoring** | SHAP + Notebook | Analyse de l’importance des variables et suivi des métriques |
 
 
-```
 
 ### Structure du dépôt
 
@@ -103,9 +102,9 @@ curl -X POST http://127.0.0.1:8000/predict \
 ```
 
 
-```
+
 <a href="images/AppStreamlit.pdf">
   <img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>
 </a>
 
-```
+
