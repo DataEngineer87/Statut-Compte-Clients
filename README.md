@@ -65,12 +65,17 @@ PredictionStatutCompte/
 
 #### Exécution locale
 ```
-git clone https://github.com/DataEngineer87/Statut-Compte-Clients.git
-cd Statut-Compte-Clients
-python -m venv venv
-source venv/bin/activate  
-pip install -r requirements.txt
-uvicorn app.fast_api:app --reload --host 127.0.0.1 --port 8000
+git clone https://github.com/DataEngineer87/Statut-Compte-Clients.git  # Clonage du dépôt GitHub (télécharge le projet localement)
+
+cd Statut-Compte-Clients  # Entre dans le dossier du projet
+
+python -m venv venv   # Crée un environnement virtuel Python isolé (bonne pratique en Data Science)
+
+source venv/bin/activate  # Active l'environnement virtuel
+
+pip install -r requirements.txt  # Installe toutes les dépendances nécessaires au projet
+
+uvicorn app.fast_api:app --reload --host 127.0.0.1 --port 8000  # Lance le serveur FastAPI en mode développement (avec rechargement automatique)
 
 ```
 
@@ -111,12 +116,21 @@ curl http://127.0.0.1:8000/predict
 ```
 
 ### CI/CD — GitHub Actions
+
 Workflow automatisé dans .github/workflows/mlops.yml
 ```
-- name: Vérification du /predict
-  run: |
+# Étape de test de l’API FastAPI dans le workflow GitHub Actions
+
+- name: Vérification du /predict  # Nom affiché dans l’interface GitHub Actions
+
+  run: |  # Indique l'execution de plusieurs commandes shell
+    #     Lancement du conteneur Docker de l’API en arrière-plan (-d)
+    #    -p 8000:8000 → redirige le port local 8000 vers celui du conteneur
+    #    --name fastapi_test → donne un nom au conteneur (facilite le debug)
+    #    ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest → image Docker poussée sur Docker Hub
+
     docker run -d -p 8000:8000 --name fastapi_test ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
-    sleep 5
+    sleep 5  # Attendre quelques secondes que l’API démarre avant de l’interroger
     curl -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d '{"gender": "Male", ...}'
 ```
 
