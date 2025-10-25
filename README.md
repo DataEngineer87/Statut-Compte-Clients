@@ -129,7 +129,7 @@ Chaque push sur main déclenche :
 ### Application Streamlit (Cloud)
 
 Interface interactive pour tester le modèle :
-👉 Application hébergée sur Streamlit Cloud
+![👉 Application hébergée sur Streamlit Cloud](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 ### Monitoring & Explicabilité
 Les notebooks intégrés permettent de :
@@ -141,8 +141,6 @@ Ils ne sont pas inclus dans le workflow CI/CD (par souci d’efficacité), mais 
 #### Monitoring du modèle
 
 Suivi des performances et détection de dérive des données avec MLflow et un tableau de bord Streamlit.
-
-![Monitoring Example](./reports/monitoring_example.png)
 
 <a href="images/AppStreamlit.pdf">
   ![Monitoring Example](<img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>)
