@@ -170,8 +170,6 @@ Chaque push sur main déclenche :
 ### Application Streamlit (Cloud)
 
 Interface interactive pour tester le modèle :
-[![👉 Streamlit App](https://img.shields.io/badge/Streamlit%20App-Live-brightgreen?logo=streamlit)]([https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/))
-
 [![Ouvrir sur Streamlit Cloud](https://img.shields.io/badge/Open%20App-Streamlit%20Cloud-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 ### Monitoring & Explicabilité
