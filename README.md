@@ -110,9 +110,30 @@ Dans cet exemple, on a :
 ### Déploiement avec Docker
 
 ```
+# Construction de l'image Docker à partir du Dockerfile
+
+# -t : donne un nom et un tag à l'image (ici "alseny87/statusclients-api:latest")
+
+# .  : indique que le Dockerfile se trouve dans le répertoire courant
+
 docker build -t alseny87/statusclients-api:latest .
+
+#  Lancement du conteneur à partir de l'image construite
+
+# -d : exécute le conteneur en arrière-plan (mode détaché)
+
+# -p 8000:8000 : mappe le port 8000 du conteneur vers le port 8000 local
+
+# --name fastapi_app : donne un nom au conteneur pour le retrouver facilement
+
 docker run -d -p 8000:8000 --name fastapi_app alseny87/statusclients-api:latest
+
+# Test de l’API FastAPI via une requête HTTP sur le endpoint /predict
+
+# Vérification si l’API répond correctement sur le port exposé (8000)
+
 curl http://127.0.0.1:8000/predict
+
 ```
 
 ### CI/CD — GitHub Actions
@@ -124,9 +145,13 @@ Workflow automatisé dans .github/workflows/mlops.yml
 - name: Vérification du /predict  # Nom affiché dans l’interface GitHub Actions
 
   run: |  # Indique l'execution de plusieurs commandes shell
+
     #     Lancement du conteneur Docker de l’API en arrière-plan (-d)
+
     #    -p 8000:8000 → redirige le port local 8000 vers celui du conteneur
+
     #    --name fastapi_test → donne un nom au conteneur (facilite le debug)
+
     #    ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest → image Docker poussée sur Docker Hub
 
     docker run -d -p 8000:8000 --name fastapi_test ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
@@ -147,7 +172,7 @@ Chaque push sur main déclenche :
 Interface interactive pour tester le modèle :
 [![👉 Streamlit App](https://img.shields.io/badge/Streamlit%20App-Live-brightgreen?logo=streamlit)]([https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/))
 
-![👉 Application hébergée sur Streamlit Cloud](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
+[![Ouvrir sur Streamlit Cloud](https://img.shields.io/badge/Open%20App-Streamlit%20Cloud-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 ### Monitoring & Explicabilité
 Les notebooks intégrés permettent de :
