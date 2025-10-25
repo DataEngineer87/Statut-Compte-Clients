@@ -38,6 +38,7 @@ Elle inclut :
 - **Monitoring manuel** pour suivre les performances du modèle.
 
 ### Description rapide du pipeline
+---
 
 | Étape | Technologie | Description |
 |:------|:-------------|:------------|
@@ -47,7 +48,11 @@ Elle inclut :
 | **Interface utilisateur** | Streamlit Cloud | Interface de prédiction accessible en ligne |
 | **Explicabilité & Monitoring** | SHAP + Notebook | Analyse de l’importance des variables et suivi des métriques |
 
+
+---
+
 ### Structure du dépôt
+--- 
 
 PredictionStatutCompte/
 │── app/
@@ -68,6 +73,8 @@ PredictionStatutCompte/
 │── Dockerfile                   # Image Docker de l’API
 │── .github/workflows/mlops.yml  # Workflow CI/CD GitHub Actions
 │── README.md                    # Documentation du projet
+
+--- 
 
 ### Résultat attendu
 
