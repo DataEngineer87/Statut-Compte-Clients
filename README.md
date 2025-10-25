@@ -41,54 +41,9 @@ Ce projet illustre la mise en œuvre **complète d’un pipeline MLOps** permett
 Le tout avec un suivi expérimental via **MLflow**, une explicabilité avec **SHAP**, et un monitoring via notebook Jupyter.
 
 ---
+Cette démarche suit une logique **modulaire et scalable**, typique d’un pipeline MLOps de production.
 
-## Architecture du Projet
-
-L’architecture suit une logique **modulaire et scalable**, typique d’un pipeline MLOps de production.
-
-```text
-                ┌────────────────────────────┐
-                │        Data Sources         │
-                └────────────┬───────────────┘
-                             │
-                             ▼
-                     Data Preprocessing
-                             │
-                             ▼
-                      Model Training (MLflow)
-                             │
-                 ┌───────────┴───────────┐
-                 │                       │
-                 ▼                       ▼
-           Model Registry          SHAP Explainability
-                 │
-                 ▼
-           FastAPI Endpoint (app/)
-                 │
-         ┌───────┴────────┐
-         │  Docker Image   │  →   (Containerization)
-         └───────┬────────┘
-                 │
-                 ▼
-         CI/CD (GitHub Actions)
-                 │
-                 ▼
-    Streamlit Cloud — Web Dashboard
-
-
-
-
-
-
-
-
-
-
-
-Ce projet démontre la mise en place d’un pipeline **MLOps complet** :  
-de l’entraînement d’un modèle de machine learning, jusqu’à son **déploiement automatisé en production**, via **FastAPI**, **Docker**, et **GitHub Actions**.
-
-Il inclut :
+Elle inclut :
 - **MLflow** pour le suivi des expérimentations,  
 - **FastAPI** pour l’exposition du modèle en API REST,  
 - **Docker** pour la conteneurisation,  
