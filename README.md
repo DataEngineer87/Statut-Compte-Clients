@@ -8,11 +8,9 @@
 ![SHAP](https://img.shields.io/badge/Explainability-SHAP-FE7A16?logo=plotly&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-```
+
 ### Démonstration interactive
 [![Streamlit Cloud](https://img.shields.io/badge/App_Streamlit-Cliquez%20ici%20pour%20tester%20l'application%20en%20ligne-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
-
-```
 
 
 ### Objectif du projet
@@ -105,7 +103,7 @@ curl -X POST http://127.0.0.1:8000/predict \
 L’application prédit si un **compte client** est **actif ou inactif**,  
 à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement, etc).
 
-Ici : 
+Dans notre cas, ona a : 
 
 ```
 {"prediction": "Active"}
