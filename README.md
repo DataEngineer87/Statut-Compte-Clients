@@ -155,14 +155,13 @@ Les notebooks intégrés permettent de :
 Ils ne sont pas inclus dans le workflow CI/CD (par souci d’efficacité), mais servent à des ***analyses post-déploiement.***
 
 #### Monitoring du modèle
-
 Suivi des performances et détection de dérive des données avec MLflow et un tableau de bord Streamlit.
 
-```
+
 <a href="images/AppStreamlit.pdf">
   ![Monitoring Example](<img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>)
 </a>
-```
+
 ### Stack Technique
 
 ```
