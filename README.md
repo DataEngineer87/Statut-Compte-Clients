@@ -117,6 +117,8 @@ curl http://127.0.0.1:8000/predict
 ### CI/CD — GitHub Actions
 
 Workflow automatisé dans .github/workflows/mlops.yml
+
+```
 - name: Vérification du /predict
   run: |
     docker run -d -p 8000:8000 --name fastapi_test ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
