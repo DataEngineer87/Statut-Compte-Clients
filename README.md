@@ -18,6 +18,72 @@
 ---
 
 ### Objectif du projet
+# 🤖 Prédiction du Statut de Compte — MLOps | FastAPI | Docker | Streamlit | GitHub Actions
+
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white)
+![Docker](https://img.shields.io/badge/Container-Docker-2496ED?logo=docker&logoColor=white)
+![MLflow](https://img.shields.io/badge/Experiment%20Tracking-MLflow-0194E2?logo=mlflow&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
+![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B?logo=streamlit&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
+
+## Objectif du projet
+
+Ce projet illustre la mise en œuvre **complète d’un pipeline MLOps** permettant de :
+- **entraîner un modèle de machine learning** (Random Forest),
+- **déployer une API de prédiction** via FastAPI et Docker,
+- **automatiser les tests, le build et le déploiement** avec GitHub Actions,
+- **offrir une interface utilisateur intuitive** sur Streamlit Cloud.
+
+Le tout avec un suivi expérimental via **MLflow**, une explicabilité avec **SHAP**, et un monitoring via notebook Jupyter.
+
+---
+
+## Architecture du Projet
+
+L’architecture suit une logique **modulaire et scalable**, typique d’un pipeline MLOps de production.
+
+```text
+                ┌────────────────────────────┐
+                │        Data Sources         │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                     Data Preprocessing
+                             │
+                             ▼
+                      Model Training (MLflow)
+                             │
+                 ┌───────────┴───────────┐
+                 │                       │
+                 ▼                       ▼
+           Model Registry          SHAP Explainability
+                 │
+                 ▼
+           FastAPI Endpoint (app/)
+                 │
+         ┌───────┴────────┐
+         │  Docker Image   │  →   (Containerization)
+         └───────┬────────┘
+                 │
+                 ▼
+         CI/CD (GitHub Actions)
+                 │
+                 ▼
+    Streamlit Cloud — Web Dashboard
+
+
+
+
+
+
+
+
+
+
 
 Ce projet démontre la mise en place d’un pipeline **MLOps complet** :  
 de l’entraînement d’un modèle de machine learning, jusqu’à son **déploiement automatisé en production**, via **FastAPI**, **Docker**, et **GitHub Actions**.
