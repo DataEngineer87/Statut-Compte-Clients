@@ -65,18 +65,14 @@ PredictionStatutCompte/
 
 #### Exécution locale
 ```
-git clone https://github.com/DataEngineer87/Statut-Compte-Clients.git  # Clonage du dépôt GitHub (télécharge le projet localement)
-
+git clone https://github.com/DataEngineer87/Statut-Compte-Clients.git  
 cd Statut-Compte-Clients  # Entre dans le dossier du projet
+python -m venv venv  
+source venv/bin/activate  
+pip install -r requirements.txt  
 
-python -m venv venv   # Crée un environnement virtuel Python isolé (bonne pratique en Data Science)
-
-source venv/bin/activate  # Active l'environnement virtuel
-
-pip install -r requirements.txt  # Installe toutes les dépendances nécessaires au projet
-
-uvicorn app.fast_api:app --reload --host 127.0.0.1 --port 8000  # Lance le serveur FastAPI en mode développement (avec rechargement automatique)
-
+# Lance le serveur FastAPI en mode développement
+uvicorn app.fast_api:app --reload --host 127.0.0.1 --port 8000  
 ```
 
 
