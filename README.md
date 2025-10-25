@@ -130,7 +130,9 @@ Workflow automatisé dans .github/workflows/mlops.yml
     #    ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest → image Docker poussée sur Docker Hub
 
     docker run -d -p 8000:8000 --name fastapi_test ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
+
     sleep 5  # Attendre quelques secondes que l’API démarre avant de l’interroger
+
     curl -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d '{"gender": "Male", ...}'
 ```
 
@@ -159,7 +161,7 @@ Suivi des performances et détection de dérive des données avec MLflow et un t
 
 
 <a href="images/AppStreamlit.pdf">
-  ![Monitoring Example](<img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>)
+  (<img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>)
 </a>
 
 ### Stack Technique
