@@ -106,13 +106,72 @@ L’application prédit si un **compte client** est **actif ou inactif**,
 à partir de caractéristiques sociodémographiques et comportementales (revenu, âge, type d’abonnement, etc).
 
 Dans notre cas, ona a : 
-
 ```
 {"prediction": "Active"}
-
 ```
 
+### Déploiement avec Docker
 
+```
+docker build -t alseny87/statusclients-api:latest .
+docker run -d -p 8000:8000 --name fastapi_app alseny87/statusclients-api:latest
+curl http://127.0.0.1:8000/predict
+```
+
+### CI/CD — GitHub Actions
+Workflow automatisé dans .github/workflows/mlops.yml
+```
+- name: Vérification du /predict
+  run: |
+    docker run -d -p 8000:8000 --name fastapi_test ${{ secrets.DOCKER_USERNAME }}/statusclients-api:latest
+    sleep 5
+    curl -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d '{"gender": "Male", ...}'
+```
+
+Chaque push sur main déclenche :
+- Tests unitaires 
+- Build Docker 
+- Push vers Docker Hub 
+- Vérification automatique du endpoint /predict
+
+### Application Streamlit (Cloud)
+
+Interface interactive pour tester le modèle :
+👉 Application hébergée sur Streamlit Cloud
+
+### Monitoring & Explicabilité
+Les notebooks intégrés permettent de :
+- suivre les performances du modèle dans le temps,
+- expliquer les variables clés grâce à SHAP.
+
+Ils ne sont pas inclus dans le workflow CI/CD (par souci d’efficacité), mais servent à des ***analyses post-déploiement.***
+### Stack Technique
+
+| Catégorie                 | Outils & Technologies |
+| ------------------------- | --------------------- |
+| **Langage principal**     | Python 3.10+          |
+| **API Backend**           | FastAPI               |
+| **Conteneurisation**      | Docker                |
+| **CI/CD Automation**      | GitHub Actions        |
+| **Interface Utilisateur** | Streamlit Cloud       |
+| **Suivi Expériences**     | MLflow                |
+| **Explicabilité**         | SHAP                  |
+| **Tests Unitaires**       | pytest                |
+
+### Points Forts du Projet
+- Pipeline MLOps complet — du notebook au déploiement
+- API conteneurisée et testée automatiquement
+- Intégration continue (CI) et livraison continue (CD)
+- Visualisation interactive avec Streamlit
+- Explicabilité et transparence avec SHAP
+- Architecture cloud-ready (Docker + GitHub Actions)
+- Code structuré et maintenable pour production
+
+# Auteur
+
+### Réalisé par : Alseny SACKO
+
+***Data Scientist & Machine Learning Engineer — Passionné par le déploiement et l’explicabilité des modèles IA.***
 
 
 <a href="images/AppStreamlit.pdf">
