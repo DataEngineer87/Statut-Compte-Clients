@@ -12,6 +12,7 @@
 ### Démonstration interactive
 [![Streamlit Cloud](https://img.shields.io/badge/App_Streamlit-Cliquez%20ici%20pour%20tester%20l'application%20en%20ligne-FF4B4B?logo=streamlit&logoColor=white)](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
+![👉 Application hébergée sur Streamlit Cloud](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
 
 ### Objectif du projet
 
