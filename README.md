@@ -8,9 +8,8 @@
 ![SHAP](https://img.shields.io/badge/Explainability-SHAP-FE7A16?logo=plotly&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-
 ### Démonstration interactive
-👉 [Application hébergée sur Streamlit Cloud](https://predictionstatutcompte-kfxgmqeampjqfsoe6nbpjq.streamlit.app/)
+👉 [Application hébergée sur Streamlit Cloud](https://projetstatutcompte-uua7txatyu42lkleidzt2t.streamlit.app/)
 
 ### Objectif du projet
 
