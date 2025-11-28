@@ -1,3 +1,0 @@
-Donnees/*.csv filter=lfs diff=lfs merge=lfs -text
-Scripts/artifacts/*.joblib filter=lfs diff=lfs merge=lfs -text
-Scripts/mlruns/**/*.pkl filter=lfs diff=lfs merge=lfs -text

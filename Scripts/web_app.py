@@ -6,8 +6,8 @@ import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-# --- Définition de l'API FastAPI intégrée ---
-app = FastAPI(title="API Prédiction Abonnement Client")
+# Définition de l'API FastAPI intégrée 
+app = FastAPI(title="API Prédiction Statut de Compte Client")
 
 class ClientData(BaseModel):
     gender: str
@@ -29,25 +29,25 @@ def predict(data: ClientData):
     else:
         return {"prediction": "Inactive"}
 
-# --- Lancer FastAPI en arrière-plan ---
+# Lancer FastAPI en arrière-plan 
 def run_api():
     uvicorn.run(app, host="0.0.0.0", port=8000, log_level="warning")
 
 threading.Thread(target=run_api, daemon=True).start()
 
-# --- Configuration de la page Streamlit ---
+# Configuration de la page Streamlit 
 st.set_page_config(
     page_title="Prédiction Abonnement Client",
     page_icon="📊",
     layout="centered"
 )
 
-st.title("Prédiction d'abonnement client 📈")
+st.title("Modélisation et prédiction du statut opérationnel des comptes clients 📈")
 st.markdown(
     "Remplis les informations ci-dessous pour obtenir la prédiction de l'abonnement client."
 )
 
-# --- Formulaire ---
+# Formulaire 
 with st.form("client_form"):
     st.subheader("Informations personnelles")
     gender = st.selectbox("Genre", ["Male", "Female"])
@@ -67,7 +67,7 @@ with st.form("client_form"):
     
     submitted = st.form_submit_button("📤 Obtenir la prédiction")
 
-# --- Validation et appel API local ---
+# Validation et appel API local 
 if submitted:
     if log_annual_income <= 0:
         st.error("Le revenu annuel doit être positif.")
@@ -92,6 +92,6 @@ if submitted:
             prediction = response.json().get("prediction", "Erreur : pas de réponse")
             
             st.markdown("### Résultat de la prédiction")
-            st.success(f"🎯 Prédiction : **{prediction}**")
+            st.success(f"Prédiction : **{prediction}**")
         except requests.exceptions.RequestException as e:
             st.error(f"❌ Erreur lors de la requête API : {e}")
