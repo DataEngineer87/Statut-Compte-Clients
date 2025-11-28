@@ -1,0 +1,17 @@
+# Données et modèles lourds
+Donnees/
+Scripts/mlruns/
+Scripts/artifacts/
+
+# Checkpoints et caches
+*.ipynb_checkpoints/
+__pycache__/
+*.pyc
+*.pkl
+
+# Logs
+*.log
+
+# Git
+.git/
+
