@@ -9,7 +9,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ### Démonstration interactive
-👉 [Application hébergée sur Streamlit Cloud](https://projetstatutcompte-uua7txatyu42lkleidzt2t.streamlit.app/)
+👉 [Application hébergée sur Streamlit Cloud](https://statutcompteclients-3qzfz7vqnheonajkygypwp.streamlit.app/)
 
 ### Objectif du projet
 
@@ -132,7 +132,7 @@ Chaque push sur main déclenche :
 ### Application Streamlit (Cloud)
 
 Interface interactive pour tester le modèle :
-[![Ouvrir sur Streamlit Cloud](https://img.shields.io/badge/Open%20App-Streamlit%20Cloud-FF4B4B?logo=streamlit&logoColor=white)](https://projetstatutcompte-uua7txatyu42lkleidzt2t.streamlit.app/)
+[![Ouvrir sur Streamlit Cloud](https://img.shields.io/badge/Open%20App-Streamlit%20Cloud-FF4B4B?logo=streamlit&logoColor=white)](https://statutcompteclients-3qzfz7vqnheonajkygypwp.streamlit.app/)
 
 ### Monitoring & Explicabilité
 Les notebooks intégrés permettent de :
