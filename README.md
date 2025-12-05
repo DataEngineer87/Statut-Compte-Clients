@@ -11,6 +11,8 @@
 ### Démonstration interactive
 👉 [Application hébergée sur Streamlit Cloud](https://statutcompteclients-3qzfz7vqnheonajkygypwp.streamlit.app/)
 
+[![Docker Image](https://img.shields.io/badge/Docker%20Hub-alseny87%2Fstatusclients--api-blue?logo=docker)](https://hub.docker.com/r/alseny87/statusclients-api)
+
 ### Objectif du projet
 
 Ce projet illustre la mise en œuvre **complète d’un pipeline MLOps** permettant de :
