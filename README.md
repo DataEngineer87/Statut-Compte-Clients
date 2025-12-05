@@ -188,7 +188,7 @@ Analyse des variables les plus influentes sur la prédiction du statut client (a
 
 #### Tableau de bord 
 <a href="images/AppStreamlit.pdf">
-  (<img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>)
+  <img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>
 </a>
 
 ### Technique d'empilement
