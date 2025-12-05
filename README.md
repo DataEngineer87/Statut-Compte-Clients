@@ -7,42 +7,70 @@
 ![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 ![SHAP](https://img.shields.io/badge/Explainability-SHAP-FE7A16?logo=plotly&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
+### Vue d'ensemble
+Ce projet démontre ma capacité à concevoir, industrialiser et déployer un modèle de Machine Learning de bout en bout, en appliquant les bonnes pratiques MLOps utilisées en entreprise.
+De la préparation des données à la mise en production du modèle via FastAPI, en passant par une chaîne CI/CD complète avec Docker & GitHub Actions, le projet inclut également :
+- Explicabilité du modèle (SHAP)
+- Monitoring pour suivre la dérive et les performances
+- Application Streamlit Cloud pour une interface utilisateur accessible
+- Versioning et tracking des expériences via MLflow
+**Objectif :** montrer comment un Data Scientist peut livrer un modèle fiable, reproductible, traçable et explicable, prêt à être utilisé en production.
 
-- Ce projet démontre ma capacité à **concevoir, industrialiser et déployer** un modèle de Machine Learning de bout en bout.  
-- De la **préparation des données** à la **mise en production du modèle via FastAPI**, en passant par la **CI/CD avec Docker & GitHub Actions**, j’ai intégré une approche MLOps complète incluant **explicabilité (SHAP)**, **monitoring** et une **interface utilisateur Streamlit Cloud**.
-- **Objectif : montrer comment un Data Scientist peut livrer un modèle prêt pour la production, fiable, traçable et explicable.**
 
 ### Démonstration interactive
 👉 [Tester l'application en ligne (Streamlit cloud)](https://statutcompteclients-3qzfz7vqnheonajkygypwp.streamlit.app/)
 
+**Image Docker du modèle, disponible ici :**
 [![Docker Image](https://img.shields.io/badge/Docker%20Hub-alseny87%2Fstatusclients--api-blue?logo=docker)](https://hub.docker.com/r/alseny87/statusclients-api)
 
 ### Objectif du projet
-
-Ce projet illustre la mise en œuvre **complète d’un pipeline MLOps** permettant de :
-- **entraîner un modèle de machine learning** (Random Forest),
-- **déployer une API de prédiction** via FastAPI et Docker,
-- **automatiser les tests, le build et le déploiement** avec GitHub Actions,
-- **offrir une interface utilisateur intuitive** sur Streamlit Cloud.
-  
-Le tout avec un suivi expérimental via **MLflow**, une explicabilité avec **SHAP**, et un monitoring via notebook Jupyter.
-
-Cette démarche suit une logique **modulaire et scalable**, typique d’un pipeline MLOps de production.
+Cette solution illustre une mise en œuvre complète d’un pipeline MLOps, permettant de :
+- Entraîner un modèle de machine learning (Random Forest, MLflow tracking)
+- Déployer une API de prédiction performante via FastAPI
+- Conteneuriser l’API pour une reproductibilité totale (Docker)
+- Automatiser les tests, le build et le déploiement avec GitHub Actions
+- Offrir une interface utilisateur claire via Streamlit Cloud
+- Analyser l’importance des variables avec SHAP (explicabilité)
+- Suivre les performances et détecter la dérive des données via un notebook de monitoring
+Cette approche suit une logique **modulaire, scalable et industrielle**, typique d’un pipeline MLOps utilisé en production.
 
 Elle inclut :
-- **MLflow** pour le suivi des expérimentations et versionnement du modèle,  
-- **FastAPI** pour l’exposition du modèle en API REST,  
-- **Docker** pour la conteneurisation,  
-- **GitHub Actions** pour le CI/CD,  
-- **Streamlit Cloud** pour le tableau de bord de prédiction,  
-- **SHAP** pour l’explicabilité des décisions,  
-- **Monitoring manuel** pour suivre les performances du modèle.
+**MLflow — suivi des expérimentations**
+- Versioning modèle
+- Tracking des hyperparamètres
+- Comparaison des runs
 
+**FastAPI — exposer le modèle en API REST**
+- Endpoint /predict
+- Validation des données via Pydantic
+- Performance, scalabilité, documentation automatique Swagger
 
-### Structure du dépôt
+**Docker — conteneurisation**
+- Image légère et reproductible
+- Déploiement portable sur tout environnement
 
+**GitHub Actions — CI/CD**
+- Pipeline complet automatisé incluant :
+- Tests unitaires (pytest)
+- Build Docker
+- Push vers Docker Hub
+- Test réel de l’API via curl
+
+**Streamlit Cloud — interface utilisateur**
+- Formulaire client
+- Appel API en direct
+- Affichage instantané de la prédiction
+
+**SHAP — explicabilité**
+- Importance des features
+- Analyse locale et globale
+
+**Monitoring — Jupyter Notebook**
+- Suivi régulier de la qualité du modèle
+- Détection de la dérive statistique
+- KPIs ML (F1-score, recall, précision…)
+  
 ``` 
-
 PredictionStatutCompte/
 │── app/
 │   ├── FastAPI.py              # API FastAPI pour servir le modèle
