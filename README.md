@@ -123,11 +123,14 @@ Workflow automatisé dans .github/workflows/mlops.yml
     sleep 5
     curl -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d '{"gender": "Male", ...}'
 ```
-Chaque push sur main déclenche :
-- Tests unitaires 
-- Build Docker 
-- Push vers Docker Hub 
-- Vérification automatique du endpoint /predict
+**Le workflow ci_cd.yml automatise :**
+-Checkout du code
+-Installation de Python 3.13
+-Installation des dépendances + tests
+-Connexion Docker Hub (via secrets)
+-Build & Push de l’image Docker
+-Vérification automatique du endpoint /predict
+**Chaque push sur main relance automatiquement le pipeline CI/CD complet.**
 
 ### Application Streamlit (Cloud)
 
@@ -137,19 +140,20 @@ Interface interactive pour tester le modèle :
 ### Monitoring & Explicabilité
 Les notebooks intégrés permettent de :
 - suivre les performances du modèle dans le temps,
+- Détecter les dérives de données avec MLflow et un tableau de bord Streamlit.
+- Analyser l’évolution du modèle
 - expliquer les variables clés grâce à SHAP.
 
 Ils ne sont pas inclus dans le workflow CI/CD (par souci d’efficacité), mais servent à des ***analyses post-déploiement.***
 
 #### Monitoring du modèle
-Suivi des performances et détection de dérive des données avec MLflow et un tableau de bord Streamlit.
 
-
+#### Tableau de bord 
 <a href="images/AppStreamlit.pdf">
   (<img src="images/imageDrift.png" alt="Aperçu du PDF" width="800"/>)
 </a>
 
-### Stack Technique
+### Technique d'empilement
 
 ```
 | Catégorie                 | Outils & Technologies |
