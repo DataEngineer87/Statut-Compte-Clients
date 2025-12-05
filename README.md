@@ -151,6 +151,10 @@ Les notebooks intégrés permettent de :
 - expliquer les variables clés grâce à SHAP.
 
 Ils ne sont pas inclus dans le workflow CI/CD (par souci d’efficacité), mais servent à des ***analyses post-déploiement.***
+#### Explicabilité du modèle avec SHAP
+Analyse des variables les plus influentes sur la prédiction du statut client (actif/inactif).
+
+![SHAP Feature Importance](https://raw.githubusercontent.com/DataEngineer87/Prediction_statut_compte/main/reports/shap_summary.png)
 
 #### Monitoring du modèle
 
