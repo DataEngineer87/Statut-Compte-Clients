@@ -9,8 +9,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 - Ce projet démontre ma capacité à **concevoir, industrialiser et déployer** un modèle de Machine Learning de bout en bout.  
-- De la **préparation des données** à la **mise en production du modèle via FastAPI**, en passant par la **CI/CD avec Docker & GitHub Actions**,  
-- j’ai intégré une approche MLOps complète incluant **explicabilité (SHAP)**, **monitoring** et une **interface utilisateur Streamlit Cloud**.
+- De la **préparation des données** à la **mise en production du modèle via FastAPI**, en passant par la **CI/CD avec Docker & GitHub Actions**, j’ai intégré une approche MLOps complète incluant **explicabilité (SHAP)**, **monitoring** et une **interface utilisateur Streamlit Cloud**.
 **Objectif : montrer comment un Data Scientist peut livrer un modèle prêt pour la production, fiable, traçable et explicable.**
 
 ### Démonstration interactive
