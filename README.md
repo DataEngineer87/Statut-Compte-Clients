@@ -13,7 +13,7 @@
 - **Objectif : montrer comment un Data Scientist peut livrer un modèle prêt pour la production, fiable, traçable et explicable.**
 
 ### Démonstration interactive
-👉 [Application hébergée sur Streamlit Cloud](https://statutcompteclients-3qzfz7vqnheonajkygypwp.streamlit.app/)
+👉 [Tester l'application en ligne](https://statutcompteclients-3qzfz7vqnheonajkygypwp.streamlit.app/)
 
 [![Docker Image](https://img.shields.io/badge/Docker%20Hub-alseny87%2Fstatusclients--api-blue?logo=docker)](https://hub.docker.com/r/alseny87/statusclients-api)
 
