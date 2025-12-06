@@ -1,4 +1,4 @@
-## Web application avec streamlit
+### Web application avec streamlit
 import streamlit as st
 import requests
 import threading
@@ -37,7 +37,7 @@ threading.Thread(target=run_api, daemon=True).start()
 
 # Configuration de la page Streamlit 
 st.set_page_config(
-    page_title="Prédiction Abonnement Client",
+    page_title="Prédiction Statut Compte Client",
     page_icon="📊",
     layout="centered"
 )
@@ -65,7 +65,7 @@ with st.form("client_form"):
     subscription_type = st.selectbox("Type d'abonnement", ["Basic", "Standard", "Premium"])
     country = st.text_input("Pays", value="France")
     
-    submitted = st.form_submit_button("Lancer la prédiction est :")
+    submitted = st.form_submit_button("Executer:")
 
 # Validation et appel API local 
 if submitted:
