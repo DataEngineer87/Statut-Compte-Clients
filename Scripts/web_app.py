@@ -65,7 +65,7 @@ with st.form("client_form"):
     subscription_type = st.selectbox("Type d'abonnement", ["Basic", "Standard", "Premium"])
     country = st.text_input("Pays", value="France")
     
-    submitted = st.form_submit_button("📤 Obtenir la prédiction")
+    submitted = st.form_submit_button("Lancer la prédiction est :")
 
 # Validation et appel API local 
 if submitted:
