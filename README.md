@@ -20,7 +20,7 @@ De la préparation des données à la mise en production du modèle via FastAPI,
 ### Démonstration interactive
 👉 [Tester l'application en ligne (Streamlit cloud)](https://statutcompteclients-3qzfz7vqnheonajkygypwp.streamlit.app/)
 
-**Image Docker du modèle, disponible ici :**
+**Image Docker, disponible ici :**
 [![Docker Image](https://img.shields.io/badge/Docker%20Hub-alseny87%2Fstatusclients--api-blue?logo=docker)](https://hub.docker.com/r/alseny87/statusclients-api)
 
 ### Objectif du projet
