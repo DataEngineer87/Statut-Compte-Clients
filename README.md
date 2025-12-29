@@ -219,7 +219,7 @@ Analyse des variables les plus influentes sur la prédiction du statut client (a
 
 ### Réalisé par : Alseny 
 
-**Data Scientist • Machine Learning Engineer • IA Générative & MLOps**
+**Data Scientist confirmé orienté MLOps & GenAI**
 
 
 
