@@ -217,7 +217,8 @@ Analyse des variables les plus influentes sur la prédiction du statut client (a
 
 # Auteur
 
-**Alseny - Data Scientist confirmé orienté MLOps & GenAI**
+**Alseny — Data Scientist confirmé orienté MLOps & GenAI**
+
 
 
 
